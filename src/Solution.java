@@ -18,16 +18,13 @@ class Solution {
         }
 
         Arrays.sort(nums);
-        int start;
-        int end;
-
         for (int i = 0; i < nums.length - 2; i++) {
-            start = i + 1;
-            end = nums.length - 1;
-            while (start < end) {
+            int left = i + 1;
+            int right = nums.length - 1;
+            while (left < right) {
                 int one = nums[i];
-                int two = nums[start];
-                int three = nums[end];
+                int two = nums[left];
+                int three = nums[right];
                 int sum = one + two + three;
                 if (sum == 0) {
                     triplet = new ArrayList<>();
@@ -37,12 +34,12 @@ class Solution {
                     if (!validTriplets.contains(triplet)) {
                         validTriplets.add(triplet);
                     }
-                    start++;
-                    end--;
+                    left++;
+                    right--;
                 } else if (sum < 0) {
-                    start++;
+                    left++;
                 } else {
-                    end--;
+                    right--;
                 }
             }
         }
